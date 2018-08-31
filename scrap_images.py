@@ -3,9 +3,9 @@ import requests
 from lxml import html
 
 links = ["http://www.medetec.co.uk/slide%20scans/leg-ulcer-images/",
-        "http://www.medetec.co.uk/slide%20scans/leg-ulcer-images-2/",
-        "http://www.medetec.co.uk/slide%20scans/pressure-ulcer-images-a/",
-        "http://www.medetec.co.uk/slide%20scans/pressure-ulcer-images-b/"]
+         "http://www.medetec.co.uk/slide%20scans/leg-ulcer-images-2/",
+         "http://www.medetec.co.uk/slide%20scans/pressure-ulcer-images-a/",
+         "http://www.medetec.co.uk/slide%20scans/pressure-ulcer-images-b/"]
 
 data = "data/"
 
