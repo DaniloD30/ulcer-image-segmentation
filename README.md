@@ -1,4 +1,5 @@
 # ulcer-image-segmentation
+
 Automatic scrapping of ulcer image database and segmentation of the wounded regions.
 
 Databases:
@@ -8,8 +9,11 @@ Databases:
 - http://www.medetec.co.uk/slide%20scans/pressure-ulcer-images-a/index.html
 - http://www.medetec.co.uk/slide%20scans/pressure-ulcer-images-b/index.html
 
-Classes:
+Running:
 
-- Ulcer.
-- Skin.
-- Background.
+- Execute scrap_images.py
+- Go to [LabelMe](http://labelme.csail.mit.edu/Release3.0/) and annotate images by hand.
+- Save XMLs files in annotations_xml/
+- Execute annotate.py
+- Execute segment.py with the following parameters:
+    - `python segment.py --images=data/ --annotations=annotations_images/`
