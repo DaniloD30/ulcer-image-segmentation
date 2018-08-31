@@ -22,3 +22,5 @@ Running:
 5. Execute test_segment.py with the following parameters:
 
     - `python test_segment.py --images=data/ --annotations=annotations_images/ --result=segmented_images/`
+
+TODO:
