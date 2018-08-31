@@ -33,8 +33,8 @@ for link in links:
 
         name = url.split('/')[1]
 
-        complete = link + 'images/' + name
+        complete_url = link + 'images/' + name
 
         print('Downloading ' + name + ' ...')
 
-        download(complete, data + name)
+        download(complete_url, data + name)
