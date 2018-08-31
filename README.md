@@ -19,6 +19,6 @@ Running:
 
 4. Execute annotate.py
 
-5. Execute segment.py with the following parameters:
+5. Execute test_segment.py with the following parameters:
 
-    - `python segment.py --images=data/ --annotations=annotations_images/`
+    - `python test_segment.py --images=data/ --annotations=annotations_images/ --result=segmented_images/`
