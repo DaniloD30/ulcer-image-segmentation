@@ -11,9 +11,14 @@ Databases:
 
 Running:
 
-- Execute scrap_images.py
-- Go to [LabelMe](http://labelme.csail.mit.edu/Release3.0/) and annotate images by hand.
-- Save XMLs files in annotations_xml/
-- Execute annotate.py
-- Execute segment.py with the following parameters:
+1. Execute scrap_images.py
+
+2. Go to [LabelMe](http://labelme.csail.mit.edu/Release3.0/) and annotate images by hand.
+
+3. Save XMLs files in annotations_xml/
+
+4. Execute annotate.py
+
+5. Execute segment.py with the following parameters:
+
     - `python segment.py --images=data/ --annotations=annotations_images/`
