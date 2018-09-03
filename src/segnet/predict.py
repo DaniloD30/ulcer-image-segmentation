@@ -8,14 +8,14 @@ from loadbatches import imageArray
 from keras.models import load_model
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--save_weights_path", type = str  )
-parser.add_argument("--epoch_number", type = int, default = 5 )
-parser.add_argument("--test_images", type = str , default = "")
-parser.add_argument("--output_path", type = str , default = "")
-parser.add_argument("--input_height", type=int , default = 224  )
-parser.add_argument("--input_width", type=int , default = 224 )
-parser.add_argument("--model_name", type = str , default = "")
-parser.add_argument("--n_classes", type=int )
+parser.add_argument("--save_weights_path", type=str)
+parser.add_argument("--epoch_number", type=int, default=5)
+parser.add_argument("--test_images", type=str, default="")
+parser.add_argument("--output_path", type=str, default="")
+parser.add_argument("--input_height", type=int, default=224)
+parser.add_argument("--input_width", type=int, default=224)
+parser.add_argument("--model_name", type=str, default="")
+parser.add_argument("--n_classes", type=int)
 
 args = parser.parse_args()
 
