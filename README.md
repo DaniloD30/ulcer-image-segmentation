@@ -18,9 +18,3 @@ Running:
 3. Save XMLs files in annotations_xml/
 
 4. Execute annotate.py
-
-5. Execute test_segment.py with the following parameters:
-
-    - `python test_segment.py --images=data/ --annotations=annotations_images/ --result=segmented_images/`
-
-TODO:
