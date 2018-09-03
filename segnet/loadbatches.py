@@ -58,7 +58,7 @@ def getSegmentationArr( path , nClasses ,  width , height  ):
 
 
 
-def imageSegmentationGenerator( images_path , segs_path ,  batch_size,  n_classes , input_height , input_width , output_height , output_width   ):
+def segmentGenerator( images_path , segs_path ,  batch_size,  n_classes , input_height , input_width , output_height , output_width   ):
 	
 	assert images_path[-1] == '/'
 	assert segs_path[-1] == '/'
