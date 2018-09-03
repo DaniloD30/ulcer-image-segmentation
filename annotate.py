@@ -4,8 +4,12 @@ import os
 import xml.etree.ElementTree as ET
 
 data = "data/"
-annotations = "annotations_xml/"
-result = "annotations_images/"
+annotations_data = "annotations_xml_data/"
+result_dir_data = "annotations_images_data/"
+
+test = "test/"
+annotations_test = "annotations_xml_test/"
+result_dir_test = "annotations_images_test/"
 
 # Pegar cada xml de /annotations
 # Procurar seu respectivo jpg em /data
@@ -14,37 +18,50 @@ result = "annotations_images/"
 # Inserir essa informação num array do polígono
 # Chamar fillConvexPoly com o array do polígono para desenhar no array do numpy (que é a imagem final)
 
-for image in os.listdir(data):
+def annotate(d, a, r):
 
-    zero_img = np.zeros(cv2.imread(data + image).shape, dtype=np.int32)
+    for image in os.listdir(d):
 
-    annotation = annotations + image.split(".")[0] + ".xml"
+        zero_img = np.zeros(cv2.imread(d + image).shape, dtype=np.int32)
 
-    if not os.path.isfile(annotation):
+        annotation = a + image.split(".")[0] + ".xml"
 
-        continue
+        if not os.path.isfile(annotation):
 
-    print("Setting for " + image + " ...")
+            continue
 
-    root = ET.parse(annotation).getroot()
+        print("Setting for " + image + " ...")
 
-    objects = root.findall("object")
+        root = ET.parse(annotation).getroot()
 
-    for obj in objects:
+        objects = root.findall("object")
 
-        polygons = obj.findall("polygon")
+        for obj in objects:
 
-        for polygon in polygons:
+            polygons = obj.findall("polygon")
 
-            pts = []
+            for polygon in polygons:
 
-            for point in polygon.findall("pt"):
+                pts = []
 
-                x = int(point[0].text)
-                y = int(point[1].text)
+                for point in polygon.findall("pt"):
 
-                pts.append([x, y])
+                    x = int(point[0].text)
+                    y = int(point[1].text)
 
-            cv2.fillConvexPoly(zero_img, np.array(pts, dtype=np.int32), (255, 0, 0))
+                    pts.append([x, y])
 
-    cv2.imwrite(result + image, zero_img)
+                cv2.fillConvexPoly(zero_img, np.array(pts, dtype=np.int32), (1, 1, 1))
+
+        zero_img = cv2.resize(zero_img, (480, 360), interpolation=0)
+
+        cv2.imwrite(r + image, zero_img)
+
+        original_img = cv2.imread(d + image)
+
+        original_img = cv2.resize(original_img, (480, 360), interpolation=0)
+
+        cv2.imwrite(d + image, original_img)
+
+annotate(data, annotations_data, result_dir_data)
+annotate(test, annotations_test, result_dir_test)

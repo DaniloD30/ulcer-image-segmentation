@@ -6,7 +6,9 @@ import argparse
 def segment(images_path, segs_path, result_path):
 
     images = os.listdir(images_path)
+    images.sort()
     segmentations  = os.listdir(segs_path)
+    segmentations.sort()
 
     for im, seg in zip(images, segmentations):
 
