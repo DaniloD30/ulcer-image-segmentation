@@ -1,6 +1,7 @@
 import argparse
 import cv2
 import numpy as np
+import os
 import random
 
 from models import vggsegnet
@@ -40,22 +41,22 @@ images = [images_path + f for f in os.listdir(images_path)]
 colors = [(random.randint(0,255), random.randint(0,255), random.randint(0,255)) for _ in range(n_classes)]
 
 for imgName in images:
-    
+
     outName = imgName.replace(images_path, args.output_path)
-    
+
     X = imageArray(imgName, args.input_width, args.input_height)
-    
+
     pr = m.predict(np.array([X]))[0]
     pr = pr.reshape((output_height, output_width, n_classes)).argmax(axis=2)
-    
+
     seg_img = np.zeros((output_height, output_width, 3))
-    
+
     for c in range(n_classes):
-        
+
         seg_img[:,:,0] += ((pr[:,:] == c) * colors[c][0]).astype('uint8')
         seg_img[:,:,1] += ((pr[:,:] == c) * colors[c][1]).astype('uint8')
         seg_img[:,:,2] += ((pr[:,:] == c) * colors[c][2]).astype('uint8')
-        
+
     im = cv2.imread(imgName)
     seg_img = cv2.resize(seg_img, (im.shape[1], im.shape[0]))
     cv2.imwrite(outName, seg_img)

@@ -51,7 +51,7 @@ m.compile(loss='categorical_crossentropy', \
 
 if len(load_weights) > 0:
     m.load_weights(load_weights)
-    
+
 print("Model output shape", m.output_shape)
 
 output_height = m.outputHeight
@@ -75,7 +75,7 @@ if validate:
                           input_width, \
                           output_height, \
                           output_width)
-    
+
     for ep in range(epochs):
         m.fit_generator(G, 512, validation_data=G2, validation_steps=200, epochs=1)
         m.save_weights(save_weights_path + "." + str(ep))
